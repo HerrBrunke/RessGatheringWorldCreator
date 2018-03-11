@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1535311430343626}
+  m_IsPrefabParent: 1
+--- !u!1 &1535311430343626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4325278707331610}
+  - component: {fileID: 114304796591330566}
+  m_Layer: 0
+  m_Name: '[Map]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4325278707331610
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535311430343626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114304796591330566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535311430343626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2200d439fba2bcf479e57f1de42d9757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapTileCube: {fileID: 1569386547636068, guid: b9f087e6cbb35924eba893a050a52398,
+    type: 2}
+  tileSize: 1
+  tileHeightFactor: 8
+  citiesToplace: 6
+  cityAmount: 0
+  cityDistFromBorder: 4
+  cityDist: 6
+  lastCityPos: {x: 1, y: 1}
+  CityHouse:
+  - {fileID: 1460647473839174, guid: 83ccda67b1181a243a22c071e776f01a, type: 2}
+  RoadPrefab: {fileID: 1116289682246966, guid: bf493c31e4bb7434584da2fdc9ec81ed, type: 2}
+  Airplane: {fileID: 1138832100749942, guid: 451256bf4d86cb94a88de279e920c52f, type: 2}
