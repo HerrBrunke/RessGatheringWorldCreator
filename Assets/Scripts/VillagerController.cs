@@ -15,7 +15,7 @@ public class VillagerController : MonoBehaviour
     public float inventory = 0;
     public float maxInventory = 15f;
     public bool inventoryIsFull = false;
-
+    
     float resourcePerGather = 5;
 
     bool isSelecting = false;
@@ -79,7 +79,7 @@ public class VillagerController : MonoBehaviour
         }
         if (inventory >= maxInventory)
         {
-            MoveToPoint(GameObject.Find("TownCenters").transform.GetChild(0).transform.position);
+            MoveToPoint(GameObject.Find("TownCenters").transform.GetChild(0).gameObject.GetComponent<TownCenterController>().storagePlace.transform.position);
             inventoryIsFull = true;
         }
         else
@@ -290,7 +290,7 @@ public class VillagerController : MonoBehaviour
             }
         }
         inventory = 0;
-        isGathering = false;
+        isBringingBack = true;
         MoveToPoint(resourceManager.transform.position);
     }
 }

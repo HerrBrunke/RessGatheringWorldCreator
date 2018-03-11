@@ -14,6 +14,7 @@ public class TownCenterController : MonoBehaviour {
     public Camera cam;
     public GameManager gameManager;
     public float villagerConstructionCost = 50f;
+    public Transform storagePlace;
 
     private void Awake()
     {

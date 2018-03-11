@@ -1991,6 +1991,11 @@ Prefab:
       propertyPath: selectionCircle
       value: 
       objectReference: {fileID: 166266, guid: 205acbfd9bc98b44789ea0f22c64111a, type: 2}
+    - target: {fileID: 114836376669756384, guid: 61bfa7b3b4929af45a1cd049188c61b0,
+        type: 2}
+      propertyPath: distanceLeft
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61bfa7b3b4929af45a1cd049188c61b0, type: 2}
   m_IsPrefabParent: 0
@@ -2191,6 +2196,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 561895254}
   m_GameObject: {fileID: 524069623}
   m_Mesh: {fileID: 4300048, guid: 04a73e11cabed804eb4d6c9c6bbc1633, type: 3}
+--- !u!1 &548130420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 548130421}
+  m_Layer: 0
+  m_Name: StoragePlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &548130421
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 548130420}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.73, y: -2.37, z: 2.67}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1122864976}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &561895254
 Prefab:
   m_ObjectHideFlags: 0
@@ -4372,7 +4405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  distanceLeft: 0.5
+  distanceLeft: 2.5
   cam: {fileID: 0}
   inventory: 0
   maxInventory: 15
@@ -5220,6 +5253,7 @@ MonoBehaviour:
   cam: {fileID: 1342741511}
   gameManager: {fileID: 0}
   villagerConstructionCost: 50
+  storagePlace: {fileID: 548130421}
 --- !u!65 &1644548152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6324,7 +6358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  distanceLeft: 0.5
+  distanceLeft: 2.5
   cam: {fileID: 0}
   inventory: 0
   maxInventory: 15
