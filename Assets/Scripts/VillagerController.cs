@@ -92,7 +92,7 @@ public class VillagerController : MonoBehaviour
             //at TownCenter
             if (!inventoryIsFull)
             {
-                if (agent.isStopped == true && !isGathering)
+                if (agent.isStopped == true && !isBringingBack)
                 {
                     Debug.Log("HOER HJ");
                     Invoke("GatherRessources", gatherWaitSeconds);
@@ -290,7 +290,7 @@ public class VillagerController : MonoBehaviour
             }
         }
         inventory = 0;
-        isBringingBack = true;
+        isBringingBack = false;
         MoveToPoint(resourceManager.transform.position);
     }
 }
