@@ -3,19 +3,20 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Text;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
     public static GameManager Instance;
     public GameObject TownCenterController;
     public bool TownCenterisSelected;
-/*
-    bool isSelecting = false;
-    Vector3 mousePosition1;
+    /*
+        bool isSelecting = false;
+        Vector3 mousePosition1;
 
-    public GameObject selectionCirclePrefab;
- */   
+        public GameObject selectionCirclePrefab;
+     */
     //Properties
     #region Properties
-    public int Food
+    public float Food
     {
         get
         {
@@ -27,9 +28,9 @@ public class GameManager : MonoBehaviour {
             foodText.text = food.ToString();
         }
     }
-    private int food;
+    private float food;
 
-    public int Wood
+    public float Wood
     {
         get
         {
@@ -41,9 +42,9 @@ public class GameManager : MonoBehaviour {
             woodText.text = wood.ToString();
         }
     }
-    private int wood;
+    private float wood;
 
-    public int Stone
+    public float Stone
     {
         get
         {
@@ -55,9 +56,9 @@ public class GameManager : MonoBehaviour {
             stoneText.text = stone.ToString();
         }
     }
-    private int stone;
+    private float stone;
 
-    public int Gold
+    public float Gold
     {
         get
         {
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour {
             goldText.text = gold.ToString();
         }
     }
-    private int gold;
+    private float gold;
 
     #endregion
     //Textfields
@@ -90,15 +91,17 @@ public class GameManager : MonoBehaviour {
         }
     }
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         Food = 500;
         Wood = 200;
         Gold = 100;
         Stone = 50;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         /*
         // If we press the left mouse button, begin selection and remember the location of the mouse
         if (Input.GetMouseButtonDown(0))
@@ -198,7 +201,7 @@ public class GameManager : MonoBehaviour {
         idle, 
         gatherRessources,
         bringBackRessources,
-       */ 
+       */
     }
-   
+
 }

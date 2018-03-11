@@ -1,43 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum ResourceType
+{
+    stone,
+    berries,
+    wood,
+    gold
+}
+public class RessourcesManager : MonoBehaviour
+{
 
-public class RessourcesManager : MonoBehaviour {
-
-    public string type;
+    public ResourceType resourceType;
+    public ResourceType type;
     public float amount;
 
     private void Awake()
     {
-        if(transform.parent.name == "Stone")
+        if (transform.parent.name == "Stone")
         {
-            type = "stone";
+            type = ResourceType.stone; //"stone";
         }
-        if(transform.parent.name == "Berries")
+        if (transform.parent.name == "Berries")
         {
-            type = "berries";
+            type = ResourceType.berries;
         }
-        if(transform.parent.name == "Wood")
+        if (transform.parent.name == "Wood")
         {
-            type = "wood";
+            type = ResourceType.wood;
         }
-        if(transform.parent.name == "Gold")
+        if (transform.parent.name == "Gold")
         {
-            type = "gold";
+            type = ResourceType.gold;
         }
-        
+
         amount = 500f;
     }
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         Debug.Log(type);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(amount <= 0)
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (amount <= 0)
         {
             Destroy(gameObject);
         }
-	}
+    }
 }

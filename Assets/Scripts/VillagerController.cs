@@ -5,29 +5,39 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using System.Text;
 
-public class VillagerController : MonoBehaviour {
+public class VillagerController : MonoBehaviour
+{
 
     public bool isSelected;
     NavMeshAgent agent;
-    public float distanceLeft = 0.5f;
+    public float distanceLeft = 2.5f;
     public Camera cam;
-    public float inventory;
+    public float inventory = 0;
     public float maxInventory = 15f;
     public bool inventoryIsFull = false;
+
+    float resourcePerGather = 5;
+
     bool isSelecting = false;
     Vector3 mousePosition1;
     public GameObject selectionCirclePrefab;
+    public RessourcesManager resourceManager;
+
+    public int gatherWaitSeconds = 2;
+    public bool isGathering;
+    public bool isBringingBack;
 
     // Use this for initialization
-    void Start(){
-
+    void Start()
+    {
+        inventory = 0;
         agent = GetComponent<NavMeshAgent>();
         cam = Camera.main;
-        if(cam == null)
+        if (cam == null)
         {
             Debug.Log("Scheiße!");
         }
-	}
+    }
 
     // Update is called once per frame
     void Update()
@@ -51,9 +61,13 @@ public class VillagerController : MonoBehaviour {
 
                 if (Physics.Raycast(ray, out hit))
                 {
+                    resourceManager = hit.collider.gameObject.GetComponent<RessourcesManager>();
+                    if (resourceManager != null)
+                    {
+                        Debug.Log("HOER resssssour" + resourceManager.resourceType);
+                    }
                     MoveToPoint(hit.point);
 
-                   
                     isSelected = false;
                     Debug.Log("We hit: " + hit.collider.name + " " + hit.point);
                     //Move target to what we hit
@@ -63,14 +77,42 @@ public class VillagerController : MonoBehaviour {
             }
 
         }
-        if (inventory <= maxInventory)
+        if (inventory >= maxInventory)
         {
+            MoveToPoint(GameObject.Find("TownCenters").transform.GetChild(0).transform.position);
             inventoryIsFull = true;
         }
         else
         {
             inventoryIsFull = false;
         }
+        if (resourceManager != null)
+        {
+            //Task State Machine
+            //at TownCenter
+            if (!inventoryIsFull)
+            {
+                if (agent.isStopped == true && !isGathering)
+                {
+                    Debug.Log("HOER HJ");
+                    Invoke("GatherRessources", gatherWaitSeconds);
+                    isGathering = true;
+                }
+
+            }
+            //at TownCenter
+            else
+            {
+                if (agent.isStopped == true && !isGathering)
+                {
+                    BringBackRessources();
+
+                    inventory = 0;
+                    isBringingBack = true;
+                }
+            }
+        }
+
 
         #region UnitSelection
         // If we press the left mouse button, begin selection and remember the location of the mouse
@@ -207,7 +249,7 @@ public class VillagerController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-       // if(hit.collider.name )
+        // if(hit.collider.name )
     }
 
     private void OnMouseDown()
@@ -221,10 +263,34 @@ public class VillagerController : MonoBehaviour {
     }
     private void GatherRessources()
     {
-
+        if (resourceManager != null)
+        {
+            inventory += resourcePerGather;
+        }
+        isGathering = false;
     }
     private void BringBackRessources()
     {
-
+        if (resourceManager != null)
+        {
+            switch (resourceManager.type)
+            {
+                case ResourceType.wood:
+                    GameManager.Instance.Wood += inventory;
+                    break;
+                case ResourceType.stone:
+                    GameManager.Instance.Stone += inventory;
+                    break;
+                case ResourceType.berries:
+                    GameManager.Instance.Food += inventory;
+                    break;
+                case ResourceType.gold:
+                    GameManager.Instance.Gold += inventory;
+                    break;
+            }
+        }
+        inventory = 0;
+        isGathering = false;
+        MoveToPoint(resourceManager.transform.position);
     }
 }

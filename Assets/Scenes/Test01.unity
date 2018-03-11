@@ -609,7 +609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &108536571 stripped
 GameObject:
@@ -627,7 +628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &112140434
 GameObject:
@@ -1220,7 +1222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &259283875
 GameObject:
@@ -1473,7 +1476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1001 &376589916
 Prefab:
@@ -1625,7 +1629,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &392058790
 GameObject:
@@ -2629,7 +2634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &682864682
 GameObject:
@@ -2873,7 +2879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &763317998
 GameObject:
@@ -2998,7 +3005,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &822294497
 GameObject:
@@ -3091,7 +3099,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &858588571 stripped
 GameObject:
@@ -3109,7 +3118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &881402288 stripped
 GameObject:
@@ -3127,7 +3137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &932201758 stripped
 GameObject:
@@ -3145,7 +3156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &940150062
 GameObject:
@@ -3383,11 +3395,6 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 23107580585030056, guid: 833ce98178ba14d46ba2adf8897f8ce0,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5eb70a15578192547892abe7ad2b152c, type: 2}
     - target: {fileID: 1199726653590410, guid: 833ce98178ba14d46ba2adf8897f8ce0, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -3743,7 +3750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!4 &1122864976 stripped
 Transform:
@@ -3765,7 +3773,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1001 &1138975762
 Prefab:
@@ -3958,7 +3967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &1322442331
 GameObject:
@@ -4368,6 +4378,10 @@ MonoBehaviour:
   maxInventory: 15
   inventoryIsFull: 0
   selectionCirclePrefab: {fileID: 0}
+  resourceManager: {fileID: 0}
+  gatherWaitSeconds: 2
+  isGathering: 0
+  isBringingBack: 0
 --- !u!65 &1387358492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4429,7 +4443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1001 &1400002062
 Prefab:
@@ -4681,7 +4696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1001 &1474271379
 Prefab:
@@ -5015,7 +5031,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1590119903}
   m_Layer: 0
-  m_Name: TownCenter
+  m_Name: TownCenters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5407,7 +5423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &1667871535
 GameObject:
@@ -5493,7 +5510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1001 &1740472261
 Prefab:
@@ -5582,7 +5600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &1769870571
 GameObject:
@@ -6030,7 +6049,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &1924906388
 GameObject:
@@ -6219,7 +6239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &2008791926
 GameObject:
@@ -6309,6 +6330,10 @@ MonoBehaviour:
   maxInventory: 15
   inventoryIsFull: 0
   selectionCirclePrefab: {fileID: 0}
+  resourceManager: {fileID: 0}
+  gatherWaitSeconds: 2
+  isGathering: 0
+  isBringingBack: 0
 --- !u!65 &2008791931
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6370,7 +6395,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1 &2075014765
 GameObject:
@@ -6605,7 +6631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fafe68625769df4d9c69506c5a2d366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 
+  resourceType: 0
+  type: 0
   amount: 0
 --- !u!1001 &2101677894
 Prefab:
