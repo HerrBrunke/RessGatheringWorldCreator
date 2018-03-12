@@ -101,17 +101,17 @@ public class MapManager : MonoBehaviour {
                 }
             }
         }
+        if (!placeCities)
+        {
+            //update position to center
+            transform.position -= map.Width * tileSize * 0.5f * Vector3.right + map.Height * tileSize * 0.5f * Vector3.forward;
 
-        //update position to center
-        transform.position -= map.Width * tileSize * 0.5f * Vector3.right + map.Height * tileSize * 0.5f * Vector3.forward;
+            //update localNavMeshBuilder
+            localNavMeshBuilder.m_Size = new Vector3(map.Width * tileSize, 20, map.Height * tileSize);
 
-        //update localNavMeshBuilder
-        localNavMeshBuilder.m_Size = new Vector3(map.Width * tileSize, 20, map.Height * tileSize);
-
-        PlaceTownCenter();
-
-
-        if (placeCities)
+            PlaceTownCenter();
+        }
+        else
         {
             //spawn airplanes
             for (int i = 0; i < cityAmount; i++)
@@ -132,7 +132,7 @@ public class MapManager : MonoBehaviour {
             }
 
         }
-        }
+    }
     int GetRegionIndexFromHeight(float height)
     {
         for (int i = 0; i < mapGenerator.regions.Length; i++)

@@ -52,8 +52,8 @@ public class MapGenerator : MonoBehaviour {
         //first generate the map
         GenerateMap();
         //then active the villager AI
-
-        VillagerAI.SetActive(true);
+        if(VillagerAI != null)
+            VillagerAI.SetActive(true);
        // VillagerAI.transform.position = Vector3.up * 14;
     }
 
