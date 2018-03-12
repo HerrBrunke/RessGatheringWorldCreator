@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MapManager : MonoBehaviour {
 #region Properties
@@ -9,7 +10,7 @@ public class MapManager : MonoBehaviour {
     public static MapManager Instance;
     MapGenerator mapGenerator;
 
-    [Range(1,12)]
+    [Range(1,32)]
     public float tileSize;
 
     [Range(8,64)]
@@ -25,6 +26,7 @@ public class MapManager : MonoBehaviour {
     public List<Airport> airports = new List<Airport>();
     public List<City> cities = new List<City>();
     //public event System.Action<Map> OnMapGenerated;
+    public LocalNavMeshBuilder localNavMeshBuilder;
 
     void Awake () {
         if (Instance != null)
@@ -37,7 +39,7 @@ public class MapManager : MonoBehaviour {
 
     public void CreateMapFromMapData(Map map)
     {
-        GameObject.Find("AirplaneCamera").transform.parent = null;
+        //GameObject.Find("AirplaneCamera").transform.parent = null;
         cityAmount = 0;
         lastCityPos = Vector2.one;
         currentMap = map;
@@ -62,44 +64,65 @@ public class MapManager : MonoBehaviour {
                 newTile = Instantiate(mapTileCube).transform;
                 newTile.GetComponent<MeshRenderer>().sharedMaterial = map.Materials[materialIndex];
                 //newTile.localScale = new Vector3(tileSize, map.NoiseMap[x, z] * tileSize * tileHeightFactor +0.001f, tileSize);
-                newTile.localScale = new Vector3(tileSize, tileSize * materialIndex + 0.001f, tileSize);
+                newTile.localScale = new Vector3(tileSize, tileSize * materialIndex*0.25f + 0.001f, tileSize);
                 newTile.position = Vector3.right * x * tileSize + Vector3.up * newTile.localScale.y*0.5f + Vector3.forward * z * tileSize;
                 newTile.parent = transform;
-                if(cityAmount < citiesToplace 
-                    && materialIndex == 3
-                    && x >= lastCityPos.x+cityDist
-                    && z >= lastCityPos.y+cityDist
-                    && x> cityDistFromBorder 
-                    && x <map.Width- cityDistFromBorder 
-                    && z > cityDistFromBorder 
-                    && z < map.Height- cityDistFromBorder)
+                //If we got grass
+                if(materialIndex == 3 )//|| materialIndex == 4)
                 {
-                    if (CheckNeighbourRegionIndex(map, x,z, 3))
+                    newTile.gameObject.AddComponent<NavMeshSourceTag>();
+                    //newTile.gameObject.AddComponent<NavMeshL>
+                }
+                //Trees
+                else if (materialIndex == 4)
+                {
+                    if (Random.Range(0, 10) > 6)
                     {
-                        PlaceCity(x, newTile.localScale.y, z);
+                        PlaceTree(new Vector3(x * tileSize, newTile.localScale.y, z * tileSize));
                     }
                 }
+                //if(cityAmount < citiesToplace 
+                //    && materialIndex == 3
+                //    && x >= lastCityPos.x+cityDist
+                //    && z >= lastCityPos.y+cityDist
+                //    && x> cityDistFromBorder 
+                //    && x <map.Width- cityDistFromBorder 
+                //    && z > cityDistFromBorder 
+                //    && z < map.Height- cityDistFromBorder)
+                //{
+                //    if (CheckNeighbourRegionIndex(map, x,z, 3))
+                //    {
+                //        PlaceCity(x, newTile.localScale.y, z);
+                //    }
+                //}
             }
         }
 
+        //update position to center
+        transform.position -= map.Width * tileSize * 0.5f * Vector3.right + map.Height * tileSize * 0.5f * Vector3.forward;
+
+        //update localNavMeshBuilder
+        localNavMeshBuilder.m_Size = new Vector3(map.Width * tileSize, 20, map.Height * tileSize);
+
+        PlaceTownCenter();
         //spawn airplanes
-        for(int i=0; i<cityAmount; i++)
-        {
-            GameObject airplane = Instantiate(Airplane, new Vector3(Random.Range(map.Width/2, map.Width) * tileSize, 20f, Random.Range(map.Height/2, map.Height) * tileSize),Quaternion.identity,transform);
-            airplane.transform.localScale *= tileSize;
-            airplane.AddComponent<AirplaneController>();
-        }
+        //for(int i=0; i<cityAmount; i++)
+        //{
+        //    GameObject airplane = Instantiate(Airplane, new Vector3(Random.Range(map.Width/2, map.Width) * tileSize, 20f, Random.Range(map.Height/2, map.Height) * tileSize),Quaternion.identity,transform);
+        //    airplane.transform.localScale *= tileSize;
+        //    airplane.AddComponent<AirplaneController>();
+        //}
 
-        //connect cities
-        if(cityAmount>= 2)
-        {
-            for (int i = 1; i < cities.ToArray().Length; i++)
-            {
-                Debug.Log("connect");
-                ConnectCities(cities.ToArray()[i - 1], cities.ToArray()[i]);
-            }
-        }
-        
+        ////connect cities
+        //if(cityAmount>= 2)
+        //{
+        //    for (int i = 1; i < cities.ToArray().Length; i++)
+        //    {
+        //        Debug.Log("connect");
+        //        ConnectCities(cities.ToArray()[i - 1], cities.ToArray()[i]);
+        //    }
+        //}
+
     }
     int GetRegionIndexFromHeight(float height)
     {
@@ -158,6 +181,20 @@ public class MapManager : MonoBehaviour {
                     return false;
         }
         return true;
+    }
+    public GameObject treePrefab;
+    void PlaceTree(Vector3 position)
+    {
+        GameObject tree = Instantiate(treePrefab, position, Quaternion.identity, transform);
+        tree.transform.localScale *= tileSize;
+    }
+    void PlaceTownCenter()
+    {
+        NavMeshPath path = new NavMeshPath();
+        Vector3 townPosition = new Vector3(0,0,0);
+        Vector3 newResourcePosition = new Vector3(0, 0, 0);
+
+        NavMesh.CalculatePath(townPosition, newResourcePosition, NavMesh.AllAreas, path);
     }
     public GameObject[] CityHouse;
     public GameObject RoadPrefab;

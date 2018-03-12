@@ -30,8 +30,15 @@ public class MapGenerator : MonoBehaviour {
     public TerrainType[] regions;
 
     List<Material> materials;
+
+    public GameObject VillagerAI;
+    private void Awake()
+    {
+        VillagerAI.SetActive(false);
+    }
     private void Start()
     {
+
         materials = new List<Material>();
         Shader standardShader = Shader.Find("Unlit/Color");
         foreach (TerrainType t in regions)
@@ -40,6 +47,13 @@ public class MapGenerator : MonoBehaviour {
             newMat.color = t.color;
             materials.Add(newMat);
         }
+
+        //first generate the map
+        GenerateMap();
+        //then active the villager AI
+
+        VillagerAI.SetActive(true);
+       // VillagerAI.transform.position = Vector3.up * 14;
     }
 
     public void GenerateMap()
