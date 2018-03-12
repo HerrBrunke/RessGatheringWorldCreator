@@ -22,7 +22,8 @@ public class MapManager : MonoBehaviour {
     public int cityDistFromBorder = 6;
     public int cityDist = 10;
     public Vector2 lastCityPos;
-#endregion
+    public bool placeCities = false;
+    #endregion
     public List<Airport> airports = new List<Airport>();
     public List<City> cities = new List<City>();
     //public event System.Action<Map> OnMapGenerated;
@@ -81,20 +82,23 @@ public class MapManager : MonoBehaviour {
                         PlaceTree(new Vector3(x * tileSize, newTile.localScale.y, z * tileSize));
                     }
                 }
-                //if(cityAmount < citiesToplace 
-                //    && materialIndex == 3
-                //    && x >= lastCityPos.x+cityDist
-                //    && z >= lastCityPos.y+cityDist
-                //    && x> cityDistFromBorder 
-                //    && x <map.Width- cityDistFromBorder 
-                //    && z > cityDistFromBorder 
-                //    && z < map.Height- cityDistFromBorder)
-                //{
-                //    if (CheckNeighbourRegionIndex(map, x,z, 3))
-                //    {
-                //        PlaceCity(x, newTile.localScale.y, z);
-                //    }
-                //}
+                if(placeCities)
+                {
+                    if (cityAmount < citiesToplace
+                    && materialIndex == 3
+                    && x >= lastCityPos.x + cityDist
+                    && z >= lastCityPos.y + cityDist
+                    && x > cityDistFromBorder
+                    && x < map.Width - cityDistFromBorder
+                    && z > cityDistFromBorder
+                    && z < map.Height - cityDistFromBorder)
+                    {
+                        if (CheckNeighbourRegionIndex(map, x, z, 3))
+                        {
+                            PlaceCity(x, newTile.localScale.y, z);
+                        }
+                    }
+                }
             }
         }
 
@@ -105,25 +109,30 @@ public class MapManager : MonoBehaviour {
         localNavMeshBuilder.m_Size = new Vector3(map.Width * tileSize, 20, map.Height * tileSize);
 
         PlaceTownCenter();
-        //spawn airplanes
-        //for(int i=0; i<cityAmount; i++)
-        //{
-        //    GameObject airplane = Instantiate(Airplane, new Vector3(Random.Range(map.Width/2, map.Width) * tileSize, 20f, Random.Range(map.Height/2, map.Height) * tileSize),Quaternion.identity,transform);
-        //    airplane.transform.localScale *= tileSize;
-        //    airplane.AddComponent<AirplaneController>();
-        //}
 
-        ////connect cities
-        //if(cityAmount>= 2)
-        //{
-        //    for (int i = 1; i < cities.ToArray().Length; i++)
-        //    {
-        //        Debug.Log("connect");
-        //        ConnectCities(cities.ToArray()[i - 1], cities.ToArray()[i]);
-        //    }
-        //}
 
-    }
+        if (placeCities)
+        {
+            //spawn airplanes
+            for (int i = 0; i < cityAmount; i++)
+            {
+                GameObject airplane = Instantiate(Airplane, new Vector3(Random.Range(map.Width / 2, map.Width) * tileSize, 20f, Random.Range(map.Height / 2, map.Height) * tileSize), Quaternion.identity, transform);
+                airplane.transform.localScale *= tileSize;
+                airplane.AddComponent<AirplaneController>();
+            }
+
+            //connect cities
+            if (cityAmount >= 2)
+            {
+                for (int i = 1; i < cities.ToArray().Length; i++)
+                {
+                    Debug.Log("connect");
+                    ConnectCities(cities.ToArray()[i - 1], cities.ToArray()[i]);
+                }
+            }
+
+        }
+        }
     int GetRegionIndexFromHeight(float height)
     {
         for (int i = 0; i < mapGenerator.regions.Length; i++)

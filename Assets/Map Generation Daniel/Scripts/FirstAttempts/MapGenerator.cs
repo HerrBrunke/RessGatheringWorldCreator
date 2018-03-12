@@ -34,7 +34,8 @@ public class MapGenerator : MonoBehaviour {
     public GameObject VillagerAI;
     private void Awake()
     {
-        VillagerAI.SetActive(false);
+        if(VillagerAI != null)
+            VillagerAI.SetActive(false);
     }
     private void Start()
     {
